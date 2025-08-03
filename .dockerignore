@@ -1,0 +1,9 @@
+.git
+.github
+.gitignore
+README.md
+tests/
+docs/
+*.md
+.DS_Store
+Thumbs.db

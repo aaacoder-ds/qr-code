@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  qr-code-generator:
+    image: ghcr.io/aaacoder-ds/qr-code:main
+    container_name: qr-code-generator
+    restart: unless-stopped
+    ports:
+      - "3081:80"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/web
+    volumes:
+      - ./logs:/var/log/apache2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 
